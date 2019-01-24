@@ -74,6 +74,9 @@ class ProjectManager extends Instructor {
     standUp(channel){
         console.log(`${this.name} announces to ${channel}, @channel standy time!`);
     }
+    debugsCode(student, subject){
+        console.log(`${this.name} debugs ${student.name}'s code on ${subject}.`)
+    }
 }
 
 const Mark = new Instructor({
