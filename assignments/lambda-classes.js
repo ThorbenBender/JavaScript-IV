@@ -22,13 +22,24 @@ class Instructor extends Person {
         console.log(`Today we are learning about ${subject}`);
     }
     grade(student, subject) {
-        console.log(`${student.name} receives a perfect score on ${subject}`);
+        let randNum = Math.floor(Math.random()*3);
+        if(randNum === 0){
+            let points = Math.floor(Math.random()*11);
+            student.score -= points;
+            console.log(`You have to work on ${subject}. I have to remove ${points} points from your score. You have only ${student.score} left.`)
+        } else if (randNum === 1 || randNum === 2) {
+            let points = Math.floor(Math.random()*11);
+            student.score += points;
+            console.log(`Great work on ${subject}. I add ${points} points to your score. You have now ${student.score} points.`);
+        }
     }
+
 }
 
 class Student extends Person {
     constructor(attributes){
         super(attributes);
+        this.score = Math.floor(Math.random()*100);
         this.previousBackground = attributes.previousBackground;
         this.className = attributes.className;
         this.favSubjects = attributes.favSubjects;
@@ -44,6 +55,14 @@ class Student extends Person {
     sprintChallenge(subject){
         console.log(`${this.name} has begun sprint challenge on ${subject}.`);
     }
+    graduate(){
+        if(this.score >= 70){
+            console.log(`Good job, ${this.name}. You perfected the art of clicking your keyboard wile sitting in a dark room. Here is your black hoodie!`)
+        } else {
+            console.log(`Sorry ${this.name}. You are not ready. Go back in your dark room and try to type faster.`)
+        }
+    }
+
 }
 
 class ProjectManager extends Instructor {
